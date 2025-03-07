@@ -1,0 +1,164 @@
+/* Importing Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 15px;
+    background: #eee;
+    overflow: hidden;
+}
+
+.wrapper {
+    max-width: 500px;
+    width: 100%;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .title {
+    height: 120px;
+    background: #16a085;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper form {
+    padding: 25px 35px;
+}
+
+.wrapper form .row {
+    height: 60px;
+    margin-top: 15px;
+    position: relative;
+}
+
+.wrapper form .row input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding-left: 70px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+form .row input:focus {
+    border-color: #16a085;
+}
+
+form .row input::placeholder {
+    color: #999;
+}
+
+.wrapper form .row i {
+    position: absolute;
+    width: 55px;
+    height: 100%;
+    color: #fff;
+    font-size: 22px;
+    background: #16a085;
+    border: 1px solid #16a085;
+    border-radius: 5px 0 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper form .pass {
+    margin-top: 12px;
+}
+
+.wrapper form .pass a {
+    color: #16a085;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+.wrapper form .pass a:hover {
+    text-decoration: underline;
+}
+
+/* Nhóm hai nút với khoảng trống nhỏ */
+.button-group {
+    display: flex;
+    gap: 15px; /* Khoảng cách nhỏ giữa hai nút */
+    margin-top: 20px; /* Giữ khoảng cách với các phần tử khác trong form */
+}
+
+/* Style cho nút "Đăng nhập" */
+.wrapper form .button input {
+    margin-top: 0; /* Loại bỏ margin-top vì đã nằm trong button-group */
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 12px 25px; /* Giống nút "Đăng nhập bằng Google" để đồng nhất kích thước */
+    background: #16a085;
+    border: 1px solid #16a085;
+    cursor: pointer;
+    border-radius: 8px; /* Bo tròn giống nút "Đăng nhập bằng Google" */
+    outline: none;
+    width: 100%; /* Đảm bảo nút rộng bằng form */
+    transition: all 0.4s ease; /* Hiệu ứng mượt mà giống nút "Đăng nhập bằng Google" */
+}
+
+.wrapper form .button input:hover {
+    background: #12876f;
+    box-shadow: 0 4px 15px rgba(22, 160, 133, 0.3); /* Thêm shadow giống nút "Đăng nhập bằng Google" */
+}
+
+/* Style cho nút "Đăng nhập bằng Google" */
+.row.custom-button .custom-button-link {
+    display: inline-block;
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #e74c3c, #d62c1a); /* Gradient đỏ đẹp mắt */
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px; /* Bo tròn nhiều hơn để hiện đại */
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3); /* Thêm shadow cho nổi bật */
+    transition: all 0.4s ease; /* Hiệu ứng mượt mà hơn */
+    outline: none; /* Loại bỏ outline mặc định */
+    text-align: center;
+    width: 100%; /* Đảm bảo nút rộng bằng form */
+}
+
+.row.custom-button .custom-button-link:hover {
+    background: linear-gradient(45deg, #d62c1a, #b21f10); /* Gradient đậm hơn khi hover */
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5); /* Shadow lớn hơn khi hover */
+    transform: translateY(-2px); /* Nâng nút lên nhẹ khi hover */
+}
+
+.wrapper form .signup-link {
+    text-align: center;
+    margin-top: 45px;
+    font-size: 17px;
+}
+
+.wrapper form .signup-link a {
+    color: #16a085;
+    text-decoration: none;
+}
+
+form .signup-link a:hover {
+    text-decoration: underline;
+}

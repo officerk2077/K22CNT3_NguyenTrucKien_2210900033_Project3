@@ -18,4 +18,16 @@ public class HomeController {
     public String about (Model model) {
         return "home/about";
     }
+    @GetMapping("/genre")
+    public String genre (Model model) {
+        return "home/genre";
+    }
+    @GetMapping("/signup")
+    public String signup (Model model) {
+        return "home/signup";
+    }
+    @GetMapping("/login")
+    public String login (Model model) {
+        return "home/login";
+    }
 }

@@ -69,7 +69,29 @@ CREATE TABLE ntk_KhachHang (
     ntk_Email VARCHAR(100) DEFAULT NULL,
     ntk_SoDienThoai VARCHAR(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
+CREATE TABLE ntk_Role (
+    ntk_MaRole INT AUTO_INCREMENT PRIMARY KEY,
+    ntk_TenRole VARCHAR(50) NOT NULL UNIQUE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE ntk_User_Role (
+    ntk_MaUser INT,
+    ntk_MaRole INT,
+    PRIMARY KEY (ntk_MaUser, ntk_MaRole),
+    FOREIGN KEY (ntk_MaUser) REFERENCES ntk_User(ntk_MaUser) ON DELETE CASCADE,
+    FOREIGN KEY (ntk_MaRole) REFERENCES ntk_Role(ntk_MaRole) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE ntk_User (
+    ntk_MaUser INT AUTO_INCREMENT PRIMARY KEY,
+    ntk_TenDangNhap VARCHAR(50) NOT NULL UNIQUE,
+    ntk_MatKhau VARCHAR(255) NOT NULL,
+    ntk_Email VARCHAR(100) NOT NULL UNIQUE,
+    ntk_Sodienthoai varchar (10) NULL,
+    ntk_Role Varchar(50) NOT NULL default 'USER'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+alter table ntk_User
+SELECT ntk_MaUser, ntk_MatKhau 
+FROM ntk_User 
+WHERE (ntk_TenDangNhap = ntk OR ntk_Email = wwwkienmario123@gmail.com);
 -- Chèn dữ liệu (INSERT), đảm bảo dữ liệu khớp với khóa ngoại
 INSERT INTO ntk_QuanTriVien (ntk_TenQuanTriVien, ntk_Email, ntk_MatKhau) VALUES
     ('Nguyễn Văn A', 'adminA@example.com', 'hashed_password_1'),

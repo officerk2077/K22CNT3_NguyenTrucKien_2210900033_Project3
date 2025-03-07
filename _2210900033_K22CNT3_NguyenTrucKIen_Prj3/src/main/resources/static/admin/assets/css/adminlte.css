@@ -3219,6 +3219,9 @@ input[type="button"].btn-block {
 .dropdown-toggle {
   white-space: nowrap;
 }
+.no-after::after{
+    content : none !important;
+}
 
 .dropdown-toggle::after {
   display: inline-block;

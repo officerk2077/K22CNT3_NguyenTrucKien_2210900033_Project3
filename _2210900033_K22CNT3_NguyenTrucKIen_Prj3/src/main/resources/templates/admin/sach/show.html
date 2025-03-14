@@ -11,12 +11,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Chi tiết người dùng</h1>
+                        <h1 class="m-0">Chi tiết sách</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a th:href="@{/admin}">Home</a></li>
-                            <li class="breadcrumb-item active">Chi tiết người dùng</li>
+                            <li class="breadcrumb-item active">Chi tiết sách</li>
                         </ol>
                     </div>
                 </div>
@@ -28,26 +28,35 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Thông tin người dùng</h3>
+                            <h3 class="card-title">Thông tin sách</h3>
                         </div>
                         <div class="card-body">
                             <dl class="row">
-                                <dt class="col-sm-3">Mã người dùng</dt>
-                                <dd class="col-sm-9" th:text="${user.id}"></dd>
+                                <dt class="col-sm-3">Mã sách</dt>
+                                <dd class="col-sm-9" th:text="${sach.id}"></dd>
 
-                                <dt class="col-sm-3">Tên người dùng</dt>
-                                <dd class="col-sm-9" th:text="${user.tenNguoiDung}"></dd>
+                                <dt class="col-sm-3">Tiêu đề</dt>
+                                <dd class="col-sm-9" th:text="${sach.tieuDe}"></dd>
 
-                                <dt class="col-sm-3">Email</dt>
-                                <dd class="col-sm-9" th:text="${user.email}"></dd>
+                                <dt class="col-sm-3">Tác giả</dt>
+                                <dd class="col-sm-9" th:text="${sach.maTacGia != null ? sach.maTacGia.tenTacGia : 'N/A'}"></dd>
 
-                                <dt class="col-sm-3">Mật khẩu</dt>
-                                <dd class="col-sm-9">******** (Ẩn vì lý do bảo mật)</dd>
+                                <dt class="col-sm-3">Nhà xuất bản</dt>
+                                <dd class="col-sm-9" th:text="${sach.maNhaXuatBan != null ? sach.maNhaXuatBan.tenNhaXuatBan : 'N/A'}"></dd>
+
+                                <dt class="col-sm-3">Năm xuất bản</dt>
+                                <dd class="col-sm-9" th:text="${sach.namXuatBan}"></dd>
+
+                                <dt class="col-sm-3">Số trang</dt>
+                                <dd class="col-sm-9" th:text="${sach.soTrang}"></dd>
+
+                                <dt class="col-sm-3">Mô tả</dt>
+                                <dd class="col-sm-9" th:text="${sach.moTa}"></dd>
                             </dl>
                         </div>
                         <div class="card-footer">
-                            <a th:href="@{/admin/user}" class="btn btn-secondary">Quay lại</a>
-                            <a th:href="@{/admin/user/edit/{id}(id=${user.id})}" class="btn btn-warning">Chỉnh sửa</a>
+                            <a th:href="@{/admin/sach}" class="btn btn-secondary">Quay lại</a>
+                            <a th:href="@{/admin/sach/edit/{id}(id=${sach.id})}" class="btn btn-warning">Chỉnh sửa</a>
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.Value;
 
 @Getter
 @Setter
@@ -12,6 +13,7 @@ import lombok.Setter;
 @Table(name = "tacgia", schema = "ntk_qlbq")
 public class Tacgia {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MaTacGia", nullable = false)
     private Integer id;
 

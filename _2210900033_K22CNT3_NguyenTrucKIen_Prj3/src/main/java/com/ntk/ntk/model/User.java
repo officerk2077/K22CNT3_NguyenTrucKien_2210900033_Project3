@@ -1,11 +1,14 @@
 package com.ntk.ntk.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Controller;
 
 @Getter
 @Setter
+@Data
 @Entity
 @Table(name = "user", schema = "ntk_qlbq", uniqueConstraints = {
         @UniqueConstraint(name = "Email", columnNames = {"Email"})

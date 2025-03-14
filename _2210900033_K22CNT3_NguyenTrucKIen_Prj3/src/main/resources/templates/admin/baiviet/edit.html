@@ -43,9 +43,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="maUser">Người đăng</label>
-                                    <select class="form-control" id="maUser" th:field="*{maUser}">
+                                    <select class="form-control" id="maUser" th:field="*{id}">
                                         <option value="">-- Chọn người đăng --</option>
-                                        <option th:each="user : ${listUser}" th:value="${user.id}" th:text="${user.tenUser}"></option>
+                                        <option th:each="user : ${listUser}" th:value="${user.id}" th:text="${user.id}"></option>
                                     </select>
                                 </div>
                                 <div class="form-group">

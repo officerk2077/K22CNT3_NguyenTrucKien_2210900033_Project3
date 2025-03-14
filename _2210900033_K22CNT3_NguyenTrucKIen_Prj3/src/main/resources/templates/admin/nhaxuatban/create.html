@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <nav th:replace="~{admin/fragments/header :: header}"></nav>
+    <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
+
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Thêm mới nhà xuất bản</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a th:href="@{/admin}">Home</a></li>
+                            <li class="breadcrumb-item active">Thêm mới nhà xuất bản</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Thêm mới nhà xuất bản</h3>
+                        </div>
+                        <form th:action="@{/admin/nhaxuatban/save}" th:object="${nhaXuatBanDTO}" method="post">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="id">Mã nhà xuất bản</label>
+                                    <input type="number" class="form-control" id="id" th:field="*{id}" placeholder="Nhập mã nhà xuất bản" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tenNhaXuatBan">Tên nhà xuất bản</label>
+                                    <input type="text" class="form-control" id="tenNhaXuatBan" th:field="*{tenNhaXuatBan}" placeholder="Nhập tên nhà xuất bản" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="diaChi">Địa chỉ</label>
+                                    <textarea class="form-control" id="diaChi" th:field="*{diaChi}" placeholder="Nhập địa chỉ"></textarea>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Lưu</button>
+                                <a th:href="@{/admin/nhaxuatban}" class="btn btn-secondary">Hủy</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
+</div>
+<div th:replace="~{admin/fragments/script :: script}"></div>
+</body>
+</html>

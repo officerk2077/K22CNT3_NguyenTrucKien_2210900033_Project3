@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <nav th:replace="~{admin/fragments/header :: header}"></nav>
+    <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
+
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Chi tiết bài viết</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a th:href="@{/admin}">Home</a></li>
+                            <li class="breadcrumb-item active">Chi tiết bài viết</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Thông tin bài viết</h3>
+                        </div>
+                        <div class="card-body">
+                            <dl class="row">
+                                <dt class="col-sm-3">Mã bài viết</dt>
+                                <dd class="col-sm-9" th:text="${baiViet.id}"></dd>
+
+                                <dt class="col-sm-3">Tiêu đề</dt>
+                                <dd class="col-sm-9" th:text="${baiViet.tieuDe}"></dd>
+
+                                <dt class="col-sm-3">Nội dung</dt>
+                                <dd class="col-sm-9" th:text="${baiViet.noiDung}"></dd>
+
+                                <dt class="col-sm-3">Người đăng</dt>
+                                <dd class="col-sm-9" th:text="${baiViet.maUser != null ? baiViet.maUser.tenUser : 'N/A'}"></dd>
+
+                                <dt class="col-sm-3">Ngày xuất bản</dt>
+                                <dd class="col-sm-9" th:text="${baiViet.ngayXuatBan}"></dd>
+
+                                <dt class="col-sm-3">Thể loại</dt>
+                                <dd class="col-sm-9" th:text="${baiViet.theLoai}"></dd>
+                            </dl>
+                        </div>
+                        <div class="card-footer">
+                            <a th:href="@{/admin/baiviet}" class="btn btn-secondary">Quay lại</a>
+                            <a th:href="@{/admin/baiviet/edit/{id}(id=${baiViet.id})}" class="btn btn-warning">Chỉnh sửa</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
+</div>
+<div th:replace="~{admin/fragments/script :: script}"></div>
+</body>
+</html>

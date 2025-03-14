@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <nav th:replace="~{admin/fragments/header :: header}"></nav>
+    <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
+
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Thêm mới bài viết</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a th:href="@{/admin}">Home</a></li>
+                            <li class="breadcrumb-item active">Thêm mới bài viết</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Thêm mới bài viết</h3>
+                        </div>
+                        <form th:action="@{/admin/baiviet/save}" th:object="${baiVietDTO}" method="post">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="tieuDe">Tiêu đề</label>
+                                    <input type="text" class="form-control" id="tieuDe" th:field="*{tieuDe}" placeholder="Nhập tiêu đề" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="noiDung">Nội dung</label>
+                                    <textarea class="form-control" id="noiDung" th:field="*{noiDung}" placeholder="Nhập nội dung" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="maUser">Người đăng</label>
+                                    <select class="form-control" id="maUser" th:field="*{maUser}">
+                                        <option value="">-- Chọn người đăng --</option>
+                                        <option th:each="user : ${listUser}" th:value="${user.id}" th:text="${user.tenUser}"></option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ngayXuatBan">Ngày xuất bản</label>
+                                    <input type="datetime-local" class="form-control" id="ngayXuatBan" th:field="*{ngayXuatBan}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="theLoai">Thể loại</label>
+                                    <input type="text" class="form-control" id="theLoai" th:field="*{theLoai}" placeholder="Nhập thể loại">
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Lưu</button>
+                                <a th:href="@{/admin/baiviet}" class="btn btn-secondary">Hủy</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
+</div>
+<div th:replace="~{admin/fragments/script :: script}"></div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <nav th:replace="~{admin/fragments/header :: header}"></nav>
+    <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
+
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Chi tiết tác giả</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a th:href="@{/admin}">Home</a></li>
+                            <li class="breadcrumb-item active">Chi tiết tác giả</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Thông tin tác giả</h3>
+                        </div>
+                        <div class="card-body">
+                            <dl class="row">
+                                <dt class="col-sm-3">Mã tác giả</dt>
+                                <dd class="col-sm-9" th:text="${tacgia.id}"></dd>
+
+                                <dt class="col-sm-3">Tên tác giả</dt>
+                                <dd class="col-sm-9" th:text="${tacgia.tenTacGia}"></dd>
+
+                                <dt class="col-sm-3">Thông tin liên hệ</dt>
+                                <dd class="col-sm-9" th:text="${tacgia.thongTinLienHe}"></dd>
+
+                                <dt class="col-sm-3">Trạng thái</dt>
+                                <dd class="col-sm-9" th:text="${tacgia.trangThai}"></dd>
+                            </dl>
+                        </div>
+                        <div class="card-footer">
+                            <a th:href="@{/admin/tacgia}" class="btn btn-secondary">Quay lại</a>
+                            <a th:href="@{/admin/tacgia/edit/{id}(id=${tacgia.id})}" class="btn btn-warning">Chỉnh sửa</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
+</div>
+<div th:replace="~{admin/fragments/script :: script}"></div>
+</body>
+</html>

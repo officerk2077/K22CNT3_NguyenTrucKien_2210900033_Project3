@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/head :: head}"></head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <nav th:replace="~{admin/fragments/header :: header}"></nav>
+    <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
+
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Chi tiết nhà xuất bản</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a th:href="@{/admin}">Home</a></li>
+                            <li class="breadcrumb-item active">Chi tiết nhà xuất bản</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Thông tin nhà xuất bản</h3>
+                        </div>
+                        <div class="card-body">
+                            <dl class="row">
+                                <dt class="col-sm-3">Mã nhà xuất bản</dt>
+                                <dd class="col-sm-9" th:text="${nhaXuatBan.id}"></dd>
+
+                                <dt class="col-sm-3">Tên nhà xuất bản</dt>
+                                <dd class="col-sm-9" th:text="${nhaXuatBan.tenNhaXuatBan}"></dd>
+
+                                <dt class="col-sm-3">Địa chỉ</dt>
+                                <dd class="col-sm-9" th:text="${nhaXuatBan.diaChi}"></dd>
+                            </dl>
+                        </div>
+                        <div class="card-footer">
+                            <a th:href="@{/admin/nhaxuatban}" class="btn btn-secondary">Quay lại</a>
+                            <a th:href="@{/admin/nhaxuatban/edit/{id}(id=${nhaXuatBan.id})}" class="btn btn-warning">Chỉnh sửa</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
+</div>
+<div th:replace="~{admin/fragments/script :: script}"></div>
+</body>
+</html>

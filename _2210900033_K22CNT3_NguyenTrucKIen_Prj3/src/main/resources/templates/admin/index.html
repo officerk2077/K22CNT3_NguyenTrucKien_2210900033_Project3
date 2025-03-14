@@ -12,62 +12,17 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Quản lý sách</h1>
+                        <h1 class="m-0">Chào mừng đến với trang admin</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a th:href="@{/admin}">Home</a></li>
-                            <li class="breadcrumb-item active">Quản lý sách</li>
+                            <li class="breadcrumb-item active">Trang chủ</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
-
-        <section class="content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="p-2 d-flex justify-content-between">
-                            <h3 class="card-title">Danh sách sách</h3>
-                            <a class="mt-3 btn btn-success" th:href="@{/admin/sach/create}">Thêm mới sách</a>
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th>Mã sách</th>
-                                    <th>Tiêu đề</th>
-                                    <th>Tác giả</th>
-                                    <th>Nhà xuất bản</th>
-                                    <th>Năm xuất bản</th>
-                                    <th>Số trang</th>
-                                    <th>Thao tác</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr th:each="sach : ${list_sach}">
-                                    <td th:text="${sach.maSach}"></td>
-                                    <td th:text="${sach.tieuDe}"></td>
-                                    <td th:text="${sach.maTacGia != null ? sach.maTacGia.tenTacGia : 'N/A'}"></td>
-                                    <td th:text="${sach.maNhaXuatBan != null ? sach.maNhaXuatBan.tenNhaXuatBan : 'N/A'}"></td>
-                                    <td th:text="${sach.namXuatBan}"></td>
-                                    <td th:text="${sach.soTrang}"></td>
-                                    <td>
-                                        <a th:href="@{/admin/sach/edit/{id}(id=${sach.maSach})}" class="btn btn-warning">Sửa</a>
-                                        <a th:href="@{/admin/sach/delete/{id}(id=${sach.maSach})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
-                                    </td>
-                                </tr>
-                                <tr th:if="${#lists.isEmpty(list_sach)}">
-                                    <td colspan="7" class="text-center">Không có dữ liệu để hiển thị!</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
 
     <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>

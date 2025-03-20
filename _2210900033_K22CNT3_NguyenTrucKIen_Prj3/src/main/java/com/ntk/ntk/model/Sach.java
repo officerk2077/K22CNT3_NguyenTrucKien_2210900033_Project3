@@ -21,6 +21,10 @@ public class Sach {
     @Column(name = "MaSach", nullable = false)
     private Integer id;
 
+    public Integer getId() {
+        return id;
+    }
+
     @Column(name = "TieuDe", nullable = false)
     private String tieuDe;
 

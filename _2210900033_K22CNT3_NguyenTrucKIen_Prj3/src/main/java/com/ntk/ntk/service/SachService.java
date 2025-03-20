@@ -25,6 +25,11 @@ public class SachService {
     @Autowired
     private NhaXuatBanRepository nhaXuatBanRepository;
 
+    // Phương thức đếm tổng số sách
+    public long countTotalBooks() {
+        return sachRepository.count();
+    }
+
     // Read: Lấy danh sách tất cả sách
     public List<Sach> getSachList() {
         return sachRepository.findAll();

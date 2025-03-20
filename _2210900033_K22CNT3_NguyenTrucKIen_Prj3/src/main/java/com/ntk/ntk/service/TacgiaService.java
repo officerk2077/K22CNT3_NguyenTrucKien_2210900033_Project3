@@ -15,6 +15,11 @@ public class TacgiaService {
     @Autowired
     private TacGiaRepository tacGiaRepository;
 
+    // Phương thức đếm tổng số tác giả
+    public long countTotalAuthors() {
+        return tacGiaRepository.count();
+    }
+
     // Read: Lấy danh sách tất cả tác giả
     public List<Tacgia> getTacgiaList() {
         return tacGiaRepository.findAll();

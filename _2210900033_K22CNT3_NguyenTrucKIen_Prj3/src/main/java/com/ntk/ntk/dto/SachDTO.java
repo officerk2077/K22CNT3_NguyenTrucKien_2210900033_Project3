@@ -10,8 +10,8 @@ public class SachDTO implements Serializable {
     private Integer id;
     private String tieuDe;
     private Integer namXuatBan;
-    private Integer maTacGia; // Chỉ lưu ID thay vì toàn bộ object Tacgia
-    private Integer maNhaXuatBan; // Chỉ lưu ID thay vì toàn bộ object Nhaxuatban
+    private Integer maTacGia;
+    private Integer maNhaXuatBan;
     private Integer soTrang;
     private String moTa;
 }

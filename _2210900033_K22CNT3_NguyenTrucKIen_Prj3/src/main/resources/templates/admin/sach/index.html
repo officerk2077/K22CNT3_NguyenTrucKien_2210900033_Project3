@@ -28,8 +28,8 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="p-2 d-flex justify-content-between">
-                            <h3 class="card-title">Danh sách sách</h3>
-                            <a class="mt-3 btn btn-success" th:href="@{/admin/sach/create}">Thêm mới sách</a>
+                            <h3 class="card-title">Danh sách tác phẩm</h3>
+                            <a th:href="@{/admin/sach/create}" class="btn btn-sm btn-success"> <i class="fas fa-plus"></i> Thêm mới tác phẩm</a>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">
@@ -53,9 +53,16 @@
                                     <td th:text="${sach.namXuatBan}"></td>
                                     <td th:text="${sach.soTrang}"></td>
                                     <td>
-                                        <a th:href="@{/admin/sach/show/{id}(id=${sach.id})}" class="btn btn-primary">Chi tiết</a>
-                                        <a th:href="@{/admin/sach/edit/{id}(id=${sach.id})}" class="btn btn-warning">Sửa</a>
-                                        <a th:href="@{/admin/sach/delete/{id}(id=${sach.id})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
+                                        <a th:href="@{/admin/sach/show/{id}(id=${sach.id})}" class="btn btn-sm btn-info">
+                                            <i class="fas fa-info-circle"></i> Chi tiết
+                                        </a>
+                                        <a th:href="@{/admin/sach/edit/{id}(id=${sach.id})}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-edit"></i> Sửa
+                                        </a>
+                                        <a th:href="@{/admin/sach/delete/{id}(id=${sach.id})}" class="btn btn-sm btn-danger"
+                                           onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết này?')">
+                                            <i class="fas fa-trash"></i> Xóa
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr th:if="${#lists.isEmpty(list_sach)}">

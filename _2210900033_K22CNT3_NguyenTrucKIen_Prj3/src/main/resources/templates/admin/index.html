@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{admin/fragments/head :: head}"></head>
+<head th:replace="~{admin/fragments/head :: head}">
+</head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
@@ -8,13 +9,11 @@
     <aside th:replace="~{admin/fragments/asideSidebar :: asideSidebar}"></aside>
 
     <div class="content-wrapper">
+        <!-- Content Header -->
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Chào mừng đến với trang admin</h1>
-                    </div>
-                    <div class="col-sm-6">
+                    <div class="col-md-12">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a th:href="@{/admin}">Home</a></li>
                             <li class="breadcrumb-item active">Trang chủ</li>
@@ -23,11 +22,115 @@
                 </div>
             </div>
         </div>
+
+        <!-- Main Content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Info Boxes -->
+                <div class="row justify-content-center">
+                    <div class="col-12 col-sm-6 col-md-2">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-file"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Bài viết</span>
+                                <span class="info-box-number" th:text="${totalPosts ?: 0}">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-2">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-users"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Người dùng</span>
+                                <span class="info-box-number" th:text="${totalUsers ?: 0}">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-2">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-user"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Tác giả</span>
+                                <span class="info-box-number" th:text="${totalAuthors ?: 0}">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-2">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-building"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Nhà xuất bản</span>
+                                <span class="info-box-number" th:text="${totalPublisher ?: 0}">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-2">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-info"><i class="fas fa-book"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">Tác phẩm</span>
+                                <span class="info-box-number" th:text="${totalBooks ?: 0}">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table for Books (Tác phẩm) -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="p-2 d-flex justify-content-between">
+                                <h3 class="card-title">Danh sách tác phẩm</h3>
+                                <a th:href="@{/admin/sach/create}" class="btn btn-sm btn-success">
+                                    <i class="fas fa-plus"></i> Thêm mới tác phẩm
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Mã sách</th>
+                                        <th>Tiêu đề</th>
+                                        <th>Tác giả</th>
+                                        <th>Nhà xuất bản</th>
+                                        <th>Năm xuất bản</th>
+                                        <th>Số trang</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="sach : ${sachList}">
+                                        <td th:text="${sach.id}">1</td>
+                                        <td th:text="${sach.tieuDe}">Tiêu đề</td>
+                                        <td th:text="${sach.maTacGia != null ? sach.maTacGia.tenTacGia : 'Không có tác giả'}">Tác giả</td>
+                                        <td th:text="${sach.maNhaXuatBan != null ? sach.maNhaXuatBan.tenNhaXuatBan : 'Không có NXB'}">Nhà xuất bản</td>
+                                        <td th:text="${sach.namXuatBan}">2023</td>
+                                        <td th:text="${sach.soTrang ?: 'N/A'}">100</td>
+                                        <td>
+                                            <a th:href="@{/admin/sach/show/{id}(id=${sach.id})}" class="btn btn-sm btn-info">
+                                                <i class="fas fa-info-circle"></i> Chi tiết
+                                            </a>
+                                            <a th:href="@{/admin/sach/edit/{id}(id=${sach.id})}" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-edit"></i> Sửa
+                                            </a>
+                                            <a th:href="@{/admin/sach/delete/{id}(id=${sach.id})}" class="btn btn-sm btn-danger"
+                                               onclick="return confirm('Bạn có chắc chắn muốn xóa tác phẩm này?')">
+                                                <i class="fas fa-trash"></i> Xóa
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr th:if="${sachList == null or sachList.isEmpty()}">
+                                        <td colspan="7" class="text-center">Không có tác phẩm nào.</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-
-    <footer th:replace="~{admin/fragments/mainFooter :: mainFooter}"></footer>
 </div>
-
-<div th:replace="~{admin/fragments/script :: script}"></div>
 </body>
 </html>

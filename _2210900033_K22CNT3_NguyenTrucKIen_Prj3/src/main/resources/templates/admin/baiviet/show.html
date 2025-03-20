@@ -30,30 +30,38 @@
                         <div class="card-header">
                             <h3 class="card-title">Thông tin bài viết</h3>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" th:if="${baiviet != null}">
                             <dl class="row">
                                 <dt class="col-sm-3">Mã bài viết</dt>
-                                <dd class="col-sm-9" th:text="${baiViet.id}"></dd>
+                                <dd class="col-sm-9" th:text="${baiviet.id}"></dd>
 
                                 <dt class="col-sm-3">Tiêu đề</dt>
-                                <dd class="col-sm-9" th:text="${baiViet.tieuDe}"></dd>
+                                <dd class="col-sm-9" th:text="${baiviet.tieuDe}"></dd>
 
                                 <dt class="col-sm-3">Nội dung</dt>
-                                <dd class="col-sm-9" th:text="${baiViet.noiDung}"></dd>
+                                <dd class="col-sm-9" th:text="${baiviet.noiDung}"></dd>
 
+                                <!--<dt class="col-sm-3">Người đăng</dt>
+                                <dd class="col-sm-9" th:text="${baiviet.maUser != null ? baiviet.maUser.id : 'Không có'}"></dd>-->
                                 <dt class="col-sm-3">Người đăng</dt>
-                                <dd class="col-sm-9" th:text="${baiViet.id != null ? baiViet.maUser.id : 'N/A'}"></dd>
+                                <dd class="col-sm-9" th:text="${baiviet.maUser != null ? baiviet.maUser.tenNguoiDung : 'Không có'}"></dd>
 
                                 <dt class="col-sm-3">Ngày xuất bản</dt>
-                                <dd class="col-sm-9" th:text="${baiViet.ngayXuatBan}"></dd>
+                                <dd class="col-sm-9" th:text="${baiviet.ngayXuatBan}"></dd>
 
                                 <dt class="col-sm-3">Thể loại</dt>
-                                <dd class="col-sm-9" th:text="${baiViet.theLoai}"></dd>
+                                <dd class="col-sm-9" th:text="${baiviet.theLoai}"></dd>
                             </dl>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-body" th:if="${baiviet == null}">
+                            <p class="text-center text-danger">Không tìm thấy thông tin bài viết!</p>
+                        </div>
+                        <div class="card-footer" th:if="${baiviet != null}">
                             <a th:href="@{/admin/baiviet}" class="btn btn-secondary">Quay lại</a>
-                            <a th:href="@{/admin/baiviet/edit/{id}(id=${baiViet.id})}" class="btn btn-warning">Chỉnh sửa</a>
+                            <a th:href="@{/admin/baiviet/edit/{id}(id=${baiviet.id})}" class="btn btn-warning">Chỉnh sửa</a>
+                        </div>
+                        <div class="card-footer" th:if="${baiviet == null}">
+                            <a th:href="@{/admin/baiviet}" class="btn btn-secondary">Quay lại danh sách</a>
                         </div>
                     </div>
                 </div>

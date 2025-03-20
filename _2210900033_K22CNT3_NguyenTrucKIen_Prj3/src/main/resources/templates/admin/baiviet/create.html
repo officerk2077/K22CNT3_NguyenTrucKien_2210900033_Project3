@@ -30,7 +30,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Thêm mới bài viết</h3>
                         </div>
-                        <form th:action="@{/admin/baiviet/save}" th:object="${baiVietDTO}" method="post">
+                        <form th:action="@{/admin/baiviet/save}" th:object="${baivietDTO}" method="post">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="tieuDe">Tiêu đề</label>
@@ -42,14 +42,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="maUser">Người đăng</label>
-                                    <select class="form-control" id="maUser" th:field="*{id}">
-                                        <option value="">-- Chọn người đăng --</option>
-                                        <option th:each="user : ${listUser}" th:value="${user.id}" th:text="${user.id}"></option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="ngayXuatBan">Ngày xuất bản</label>
-                                    <input type="datetime-local" class="form-control" id="ngayXuatBan" th:field="*{ngayXuatBan}">
+                                    <input type="number" class="form-control" id="maUser" th:field="*{maUser}" placeholder="Nhập mã người dùng">
                                 </div>
                                 <div class="form-group">
                                     <label for="theLoai">Thể loại</label>

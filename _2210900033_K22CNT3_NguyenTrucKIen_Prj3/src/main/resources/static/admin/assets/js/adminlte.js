@@ -159,7 +159,6 @@
     if (event) {
       event.preventDefault();
     }
-
     CardRefresh._jQueryInterface.call($__default['default'](this), 'load');
   });
   $__default['default'](function () {
@@ -179,18 +178,6 @@
     $__default['default'].fn[NAME$e] = JQUERY_NO_CONFLICT$e;
     return CardRefresh._jQueryInterface;
   };
-
-  /**
-   * --------------------------------------------
-   * AdminLTE CardWidget.js
-   * License MIT
-   * --------------------------------------------
-   */
-  /**
-   * Constants
-   * ====================================================
-   */
-
   var NAME$d = 'CardWidget';
   var DATA_KEY$d = 'lte.cardwidget';
   var EVENT_KEY$6 = "." + DATA_KEY$d;
@@ -405,18 +392,6 @@
     $__default['default'].fn[NAME$d] = JQUERY_NO_CONFLICT$d;
     return CardWidget._jQueryInterface;
   };
-
-  /**
-   * --------------------------------------------
-   * AdminLTE ControlSidebar.js
-   * License MIT
-   * --------------------------------------------
-   */
-  /**
-   * Constants
-   * ====================================================
-   */
-
   var NAME$c = 'ControlSidebar';
   var DATA_KEY$c = 'lte.controlsidebar';
   var EVENT_KEY$5 = "." + DATA_KEY$c;
@@ -710,18 +685,6 @@
     $__default['default'].fn[NAME$c] = JQUERY_NO_CONFLICT$c;
     return ControlSidebar._jQueryInterface;
   };
-
-  /**
-   * --------------------------------------------
-   * AdminLTE DirectChat.js
-   * License MIT
-   * --------------------------------------------
-   */
-  /**
-   * Constants
-   * ====================================================
-   */
-
   var NAME$b = 'DirectChat';
   var DATA_KEY$b = 'lte.directchat';
   var EVENT_KEY$4 = "." + DATA_KEY$b;
@@ -789,18 +752,6 @@
     $__default['default'].fn[NAME$b] = JQUERY_NO_CONFLICT$b;
     return DirectChat._jQueryInterface;
   };
-
-  /**
-   * --------------------------------------------
-   * AdminLTE Dropdown.js
-   * License MIT
-   * --------------------------------------------
-   */
-  /**
-   * Constants
-   * ====================================================
-   */
-
   var NAME$a = 'Dropdown';
   var DATA_KEY$a = 'lte.dropdown';
   var JQUERY_NO_CONFLICT$a = $__default['default'].fn[NAME$a];
@@ -929,18 +880,6 @@
     $__default['default'].fn[NAME$a] = JQUERY_NO_CONFLICT$a;
     return Dropdown._jQueryInterface;
   };
-
-  /**
-   * --------------------------------------------
-   * AdminLTE ExpandableTable.js
-   * License MIT
-   * --------------------------------------------
-   */
-  /**
-    * Constants
-    * ====================================================
-    */
-
   var NAME$9 = 'ExpandableTable';
   var DATA_KEY$9 = 'lte.expandableTable';
   var EVENT_KEY$3 = "." + DATA_KEY$9;
@@ -1042,17 +981,6 @@
     $__default['default'].fn[NAME$9] = JQUERY_NO_CONFLICT$9;
     return ExpandableTable._jQueryInterface;
   };
-
-  /**
-   * --------------------------------------------
-   * AdminLTE Fullscreen.js
-   * License MIT
-   * --------------------------------------------
-   */
-  /**
-   * Constants
-   * ====================================================
-   */
 
   var NAME$8 = 'Fullscreen';
   var DATA_KEY$8 = 'lte.fullscreen';
@@ -1160,17 +1088,6 @@
     $__default['default'].fn[NAME$8] = JQUERY_NO_CONFLICT$8;
     return Fullscreen._jQueryInterface;
   };
-
-  /**
-   * --------------------------------------------
-   * AdminLTE IFrame.js
-   * License MIT
-   * --------------------------------------------
-   */
-  /**
-   * Constants
-   * ====================================================
-   */
 
   var NAME$7 = 'IFrame';
   var DATA_KEY$7 = 'lte.iframe';

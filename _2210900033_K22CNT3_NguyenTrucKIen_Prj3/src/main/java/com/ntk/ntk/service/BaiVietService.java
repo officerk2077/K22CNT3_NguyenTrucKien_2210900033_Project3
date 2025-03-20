@@ -1,10 +1,9 @@
 package com.ntk.ntk.service;
 
-import com.ntk.ntk.dto.BaiVietDTO;
+import com.ntk.ntk.dto.BaivietDTO;
 import com.ntk.ntk.model.Baiviet;
 import com.ntk.ntk.model.User;
 import com.ntk.ntk.repository.BaiVietRepository;
-import com.ntk.ntk.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,49 +15,47 @@ import java.util.Optional;
 public class BaiVietService {
 
     @Autowired
-    private BaiVietRepository baiVietRepository;
+    private BaiVietRepository baivietRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService; // Assuming you have a UserService
 
-    // Read: Lấy danh sách tất cả bài viết
-    public List<Baiviet> getBaiVietList() {
-        return baiVietRepository.findAll();
+    public long countTotalPosts() {
+        return baivietRepository.count();
     }
 
-    // Read: Lấy bài viết theo ID
-    public Optional<Baiviet> getBaiVietById(Integer id) {
-        return baiVietRepository.findById(id);
+    // Read: Get all articles
+    public List<Baiviet> getBaivietList() {
+        return baivietRepository.findAll();
     }
 
-    // Create/Update: Lưu bài viết
-    public Baiviet saveBaiViet(Baiviet baiViet) {
-        if (baiViet.getNgayXuatBan() == null) {
-            baiViet.setNgayXuatBan(Instant.now()); // Gán mặc định nếu không có ngày xuất bản
+    // Read: Get article by ID
+    public Optional<Baiviet> getBaivietById(Integer id) {
+        return baivietRepository.findById(id);
+    }
+
+    // Create/Update: Save article
+    public Baiviet saveBaiviet(Baiviet baiviet) {
+        if (baiviet.getNgayXuatBan() == null) {
+            baiviet.setNgayXuatBan(Instant.now());
         }
-        return baiVietRepository.save(baiViet);
+        return baivietRepository.save(baiviet);
     }
 
-    // Delete: Xóa bài viết
-    public void deleteBaiViet(Integer id) {
-        baiVietRepository.deleteById(id);
+    // Delete: Delete article
+    public void deleteBaiviet(Integer id) {
+        baivietRepository.deleteById(id);
     }
 
-    // Chuyển đổi từ DTO sang Entity
-    public Baiviet convertToEntity(BaiVietDTO dto) {
-        Baiviet baiViet = new Baiviet();
-        baiViet.setId(dto.getId());
-        baiViet.setTieuDe(dto.getTieuDe());
-        baiViet.setNoiDung(dto.getNoiDung());
-        baiViet.setNgayXuatBan(dto.getNgayXuatBan());
-        baiViet.setTheLoai(dto.getTheLoai());
-
-        if (dto.getMaUser() != null) {
-            User user = userRepository.findById(dto.getMaUser())
-                    .orElseThrow(() -> new IllegalArgumentException("Invalid User ID"));
-            baiViet.setMaUser(user);
-        }
-
-        return baiViet;
+    // Convert DTO to Entity
+    public Baiviet convertToEntity(BaivietDTO dto) {
+        Baiviet baiviet = new Baiviet();
+        baiviet.setId(dto.getId());
+        baiviet.setTieuDe(dto.getTieuDe());
+        baiviet.setNoiDung(dto.getNoiDung());
+        baiviet.setNgayXuatBan(dto.getNgayXuatBan() != null ? dto.getNgayXuatBan() : Instant.now());
+        baiviet.setTheLoai(dto.getTheLoai());
+        baiviet.setMaUser(dto.getMaUser());
+        return baiviet;
     }
 }

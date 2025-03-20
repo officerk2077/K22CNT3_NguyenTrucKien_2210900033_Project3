@@ -29,7 +29,7 @@
                     <div class="card">
                         <div class="p-2 d-flex justify-content-between">
                             <h3 class="card-title">Danh sách bài viết</h3>
-                            <a class="mt-3 btn btn-success" th:href="@{/admin/baiviet/create}">Thêm mới bài viết</a>
+                            <a th:href="@{/admin/baiviet/create}" class="btn btn-sm btn-success"> <i class="fas fa-plus"></i> Thêm mới bài viết</a>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">
@@ -37,27 +37,35 @@
                                 <tr>
                                     <th>Mã bài viết</th>
                                     <th>Tiêu đề</th>
-                                    <th>Người đăng</th>
-                                    <th>Ngày xuất bản</th>
                                     <th>Thể loại</th>
+                                    <th>Ngày xuất bản</th>
+                                    <th>Mã người đăng</th>
                                     <th>Thao tác</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="baiViet : ${list_baiviet}">
-                                    <td th:text="${baiViet.id}"></td>
-                                    <td th:text="${baiViet.tieuDe}"></td>
-                                    <td th:text="${baiViet.maUser.id}"></td>
-                                    <td th:text="${baiViet.ngayXuatBan}"></td>
-                                    <td th:text="${baiViet.theLoai}"></td>
+                                <tr th:each="baiviet : ${list_baiviet}">
+                                    <td th:text="${baiviet.id}"></td>
+                                    <td th:text="${baiviet.tieuDe}"></td>
+                                    <td th:text="${baiviet.theLoai}"></td>
+                                    <td th:text="${baiviet.ngayXuatBan}"></td>
+                                    <td th:text="${baiviet.maUser != null} ? ${baiviet.maUser} : 'No user'"></td>
+
                                     <td>
-                                        <a th:href="@{/admin/baiviet/show/{id}(id=${baiViet.id})}" class="btn btn-primary">Chi tiết</a>
-                                        <a th:href="@{/admin/baiviet/edit/{id}(id=${baiViet.id})}" class="btn btn-warning">Sửa</a>
-                                        <a th:href="@{/admin/baiviet/delete/{id}(id=${baiViet.id})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
+                                        <a th:href="@{/admin/baiviet/show/{id}(id=${baiviet.id})}" class="btn btn-sm btn-info">
+                                            <i class="fas fa-info-circle"></i> Chi tiết
+                                        </a>
+                                        <a th:href="@{/admin/baiviet/edit/{id}(id=${baiviet.id})}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-edit"></i> Sửa
+                                        </a>
+                                        <a th:href="@{/admin/baiviet/delete/{id}(id=${baiviet.id})}" class="btn btn-sm btn-danger"
+                                           onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết này?')">
+                                            <i class="fas fa-trash"></i> Xóa
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr th:if="${#lists.isEmpty(list_baiviet)}">
-                                    <td colspan="6" class="text-center">Không có dữ liệu để hiển thị!</td>
+                                    <td colspan="5" class="text-center">Không có dữ liệu để hiển thị!</td>
                                 </tr>
                                 </tbody>
                             </table>

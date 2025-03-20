@@ -30,7 +30,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Thông tin nhà xuất bản</h3>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" th:if="${nhaXuatBan != null}">
                             <dl class="row">
                                 <dt class="col-sm-3">Mã nhà xuất bản</dt>
                                 <dd class="col-sm-9" th:text="${nhaXuatBan.id}"></dd>
@@ -42,9 +42,15 @@
                                 <dd class="col-sm-9" th:text="${nhaXuatBan.diaChi}"></dd>
                             </dl>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-body" th:if="${nhaXuatBan == null}">
+                            <p class="text-center text-danger">Không tìm thấy thông tin nhà xuất bản!</p>
+                        </div>
+                        <div class="card-footer" th:if="${nhaXuatBan != null}">
                             <a th:href="@{/admin/nhaxuatban}" class="btn btn-secondary">Quay lại</a>
                             <a th:href="@{/admin/nhaxuatban/edit/{id}(id=${nhaXuatBan.id})}" class="btn btn-warning">Chỉnh sửa</a>
+                        </div>
+                        <div class="card-footer" th:if="${nhaXuatBan == null}">
+                            <a th:href="@{/admin/nhaxuatban}" class="btn btn-secondary">Quay lại danh sách</a>
                         </div>
                     </div>
                 </div>

@@ -15,6 +15,10 @@ public class NhaXuatBanService {
     @Autowired
     private NhaXuatBanRepository nhaXuatBanRepository;
 
+    public long countTotalPublisher() {
+        return nhaXuatBanRepository.count();
+    }
+
     // Read: Lấy danh sách tất cả nhà xuất bản
     public List<Nhaxuatban> getNhaXuatBanList() {
         return nhaXuatBanRepository.findAll();

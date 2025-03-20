@@ -30,31 +30,37 @@
                         <div class="card-header">
                             <h3 class="card-title">Chỉnh sửa bài viết</h3>
                         </div>
-                        <form th:action="@{/admin/baiviet/save}" th:object="${baiVietDTO}" method="post">
+                        <form th:action="@{/admin/baiviet/save}" th:object="${baivietDTO}" method="post">
                             <div class="card-body">
                                 <input type="hidden" th:field="*{id}">
                                 <div class="form-group">
                                     <label for="tieuDe">Tiêu đề</label>
-                                    <input type="text" class="form-control" id="tieuDe" th:field="*{tieuDe}" placeholder="Nhập tiêu đề" required>
+                                    <input type="text" class="form-control" id="tieuDe" th:field="*{tieuDe}"
+                                           placeholder="Nhập tiêu đề" required>
+                                    <span th:if="${#fields.hasErrors('tieuDe')}" th:errors="*{tieuDe}" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="noiDung">Nội dung</label>
-                                    <textarea class="form-control" id="noiDung" th:field="*{noiDung}" placeholder="Nhập nội dung" required></textarea>
+                                    <textarea class="form-control" id="noiDung" th:field="*{noiDung}"
+                                              placeholder="Nhập nội dung" required></textarea>
+                                    <span th:if="${#fields.hasErrors('noiDung')}" th:errors="*{noiDung}" class="text-danger"></span>
                                 </div>
+                                <!--<div class="form-group">
+                                    <label for="maUser">Người đăng</label>
+                                    <input type="number" class="form-control" id="maUser" th:field="*{maUser}"
+                                           placeholder="Nhập mã người dùng">
+                                </div>-->
                                 <div class="form-group">
                                     <label for="maUser">Người đăng</label>
-                                    <select class="form-control" id="maUser" th:field="*{id}">
-                                        <option value="">-- Chọn người đăng --</option>
-                                        <option th:each="user : ${listUser}" th:value="${user.id}" th:text="${user.id}"></option>
+                                    <select class="form-control" id="maUser" th:field="*{maUser}">
+                                        <option value="">-- Chọn người dùng --</option>
+                                        <option th:each="user : ${listUser}" th:value="${user.id}" th:text="${user.tenNguoiDung}"></option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="ngayXuatBan">Ngày xuất bản</label>
-                                    <input type="datetime-local" class="form-control" id="ngayXuatBan" th:field="*{ngayXuatBan}">
-                                </div>
-                                <div class="form-group">
                                     <label for="theLoai">Thể loại</label>
-                                    <input type="text" class="form-control" id="theLoai" th:field="*{theLoai}" placeholder="Nhập thể loại">
+                                    <input type="text" class="form-control" id="theLoai" th:field="*{theLoai}"
+                                           placeholder="Nhập thể loại">
                                 </div>
                             </div>
                             <div class="card-footer">

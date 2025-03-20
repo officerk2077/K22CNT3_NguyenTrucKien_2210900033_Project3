@@ -1,15 +1,17 @@
 package com.ntk.ntk.controller;
 
-import com.ntk.ntk.dto.UserDTO;
 import com.ntk.ntk.model.User;
 import com.ntk.ntk.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@Validated
+import java.util.List;
+
 @Controller
 @RequestMapping("/admin/user")
 public class UserController {
@@ -17,56 +19,53 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // Read: Danh sách người dùng
-    @GetMapping
-    public String index(Model model) {
-        model.addAttribute("list_user", userService.getUserList());
-        return "admin/user/index";
+    @GetMapping({"", "/"})
+    public String listUsers(Model model) {
+        List<User> listUser = userService.findAll();
+        model.addAttribute("list_user", listUser);
+        return "admin/user/list_user";
     }
 
-    // Create: Hiển thị form thêm mới
     @GetMapping("/create")
-    public String create(Model model) {
-        model.addAttribute("userDTO", new UserDTO());
-        return "admin/user/create";
+    public String showCreateForm(Model model) {
+        model.addAttribute("user", new User());
+        return "admin/user/create_user";
     }
 
-    // Create/Update: Lưu người dùng
-    @PostMapping("/save")
-    public String save(@ModelAttribute("userDTO") UserDTO userDTO) {
-        User user = userService.convertToEntity(userDTO);
-        userService.saveUser(user);
-        return "redirect:/admin/user";
-    }
-
-    // Read: Hiển thị chi tiết người dùng
     @GetMapping("/show/{id}")
-    public String show(@PathVariable("id") Integer id, Model model) {
-        User user = userService.getUserById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid User ID: " + id));
-        model.addAttribute("user", user);
-        return "admin/user/show";
+    public String showUserDetails(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
+        return userService.getUserById(id)
+                .map(user -> {
+                    model.addAttribute("user", user);
+                    return "admin/user/show_user";
+                })
+                .orElseGet(() -> {
+                    redirectAttributes.addFlashAttribute("errorMessage", "Người dùng không tồn tại!");
+                    return "redirect:/admin/user";
+                });
     }
 
-    // Update: Hiển thị form chỉnh sửa
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") Integer id, Model model) {
-        User user = userService.getUserById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid User ID: " + id));
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(user.getId());
-        userDTO.setTenNguoiDung(user.getTenNguoiDung());
-        userDTO.setEmail(user.getEmail());
-        userDTO.setMatKhau(user.getMatKhau());
-
-        model.addAttribute("userDTO", userDTO);
-        return "admin/user/edit";
+    public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
+        return userService.getUserById(id)
+                .map(user -> {
+                    model.addAttribute("user", user);
+                    return "admin/user/edit_user";
+                })
+                .orElseGet(() -> {
+                    redirectAttributes.addFlashAttribute("errorMessage", "Người dùng không tồn tại!");
+                    return "redirect:/admin/user";
+                });
     }
 
-    // Delete: Xóa người dùng
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") Integer id) {
-        userService.deleteUser(id);
+    public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
+        try {
+            userService.deleteUser(id);
+            redirectAttributes.addFlashAttribute("successMessage", "Xóa người dùng thành công!");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Không thể xóa người dùng: " + e.getMessage());
+        }
         return "redirect:/admin/user";
     }
 }

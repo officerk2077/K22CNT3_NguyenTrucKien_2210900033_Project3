@@ -29,7 +29,7 @@
                     <div class="card">
                         <div class="p-2 d-flex justify-content-between">
                             <h3 class="card-title">Danh sách tác giả</h3>
-                            <a class="mt-3 btn btn-success" th:href="@{/admin/tacgia/create}">Thêm mới tác giả</a>
+                            <a th:href="@{/admin/tacgia/create}" class="btn btn-sm btn-success"> <i class="fas fa-plus"></i> Thêm mới tác giả</a>
                         </div>
                         <div class="card-body">
                             <table class="table table-bordered">
@@ -49,9 +49,16 @@
                                     <td th:text="${tacgia.thongTinLienHe}"></td>
                                     <td th:text="${tacgia.trangThai}"></td>
                                     <td>
-                                        <a th:href="@{/admin/tacgia/show/{id}(id=${tacgia.id})}" class="btn btn-primary">Chi tiết</a>
-                                        <a th:href="@{/admin/tacgia/edit/{id}(id=${tacgia.id})}" class="btn btn-warning">Sửa</a>
-                                        <a th:href="@{/admin/tacgia/delete/{id}(id=${tacgia.id})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
+                                        <a th:href="@{/admin/tacgia/show/{id}(id=${tacgia.id})}" class="btn btn-sm btn-info">
+                                            <i class="fas fa-info-circle"></i> Chi tiết
+                                        </a>
+                                        <a th:href="@{/admin/tacgia/edit/{id}(id=${tacgia.id})}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-edit"></i> Sửa
+                                        </a>
+                                        <a th:href="@{/admin/tacgia/delete/{id}(id=${tacgia.id})}" class="btn btn-sm btn-danger"
+                                           onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết này?')">
+                                            <i class="fas fa-trash"></i> Xóa
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr th:if="${#lists.isEmpty(list_tacgia)}">

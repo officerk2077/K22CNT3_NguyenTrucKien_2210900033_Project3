@@ -1,5 +1,6 @@
 package com.ntk.ntk.dto;
 
+import com.ntk.ntk.model.VaiTro;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,4 +12,5 @@ public class UserDTO implements Serializable {
     private String tenNguoiDung;
     private String email;
     private String matKhau;
+    private VaiTro vaiTro;
 }
